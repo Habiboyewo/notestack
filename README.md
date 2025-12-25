@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+NoteStack
 
-## Getting Started
+NoteStack is a modern, full-stack note-taking web application built with Next.js (App Router). It allows users to create notebooks, write and manage notes, and access everything through an authenticated dashboard.
 
-First, run the development server:
+The project focuses on a clean UI, scalable architecture, and modern tooling.
 
-```bash
-npm run dev
+Features>>
+
+Authentication>>
+User authentication powered by better-auth
+GoogleGoogle Auth(signing with Google)
+Notebooks & Notes
+Create, view, and manage and delete notebooks
+Add and edit notes inside notebooks
+
+Dashboard
+Centralized dashboard for managing content
+Modern UI
+Built with Tailwind CSS
+Shadcn
+Fast & Scalable
+Next.js App Router
+Server actions and API routes
+
+Database>>
+Drizzle ORM
+Neon (Postgres) serverless database
+
+Resend(mail)
+
+Tech Stack>>
+Next.js 16 (App Router)
+React 19
+TypeScript
+Tailwind CSS
+Next.js API Routes
+better-auth
+Drizzle ORM
+Neon Database (PostgreSQL)
+nuqs(nuqs Type-safe search params state manager for React)
+Tiptap(Rich text editor)
+Shadcn
+
+Project Structure
+noteforge/
+├── app/
+│ ├── api/ # API routes (auth, data)
+│ ├── dashboard/ # Authenticated dashboard pages
+│ └── layout.tsx # Root layout
+├── components/ # Reusable UI components
+├── lib/ # Auth, DB, utilities
+├── server/ # Server-side data logic
+├── public/ # Static assets
+├── drizzle/ # Database schema & migrations
+└── tailwind.config.ts # Tailwind configuration
+
+Getting Started
+
+1. Clone the repository
+   git clone https://github.com/your-username/notestack.git
+   cd noteforge
+
+2. Install dependencies
+   npm install
+
 # or
-yarn dev
+
+pnpm install
+
 # or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+yarn install
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Environment Variables
+   Create a .env.local file in the root directory and configure the following:
+   NEXT_PUBLIC_BASE_URL=
+   GOOGLE_CLIENT_ID=
+   GOOGLE_CLIENT_SECRET=
+   RESEND_API_KEY=
+   DATABASE_URL=
+   BETTER_AUTH_SECRET=
+   BETTER_AUTH_UR=
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Make sure your Neon database is set up before running migrations.
 
-## Learn More
+4. Run database migrations
+   npx drizzle-kit migrate
 
-To learn more about Next.js, take a look at the following resources:
+5. Start the development server
+   npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Visit http://localhost:3000 to see the app.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deployment
+The app is optimized for deployment on Vercel.
+Steps:
 
-## Deploy on Vercel
+Push the repo to GitHub
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Import into Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Set environment variables
+
+Deploy
