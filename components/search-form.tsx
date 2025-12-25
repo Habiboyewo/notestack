@@ -1,6 +1,7 @@
 "use client"
-import { Search } from "lucide-react";
 
+import * as React from "react";
+import { Search } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import {
   SidebarGroup,
@@ -9,8 +10,9 @@ import {
 } from "@/components/ui/sidebar";
 import { useQueryState } from "nuqs";
 
-export function SearchForm({ ...props }: React.ComponentProps<"form">) {
+function SearchFormContent({ ...props }: React.ComponentProps<"form">) {
   const [search, setSearch] = useQueryState("search", { defaultValue: "" });
+  
   return (
     <form {...props}>
       <SidebarGroup className="py-0">
@@ -29,5 +31,21 @@ export function SearchForm({ ...props }: React.ComponentProps<"form">) {
         </SidebarGroupContent>
       </SidebarGroup>
     </form>
+  );
+}
+
+export function SearchForm({ ...props }: React.ComponentProps<"form">) {
+  return (
+    <React.Suspense fallback={
+      <form {...props}>
+        <SidebarGroup className="py-0">
+          <SidebarGroupContent className="relative">
+            <div className="h-10 w-full animate-pulse rounded-lg bg-gray-200 dark:bg-gray-800" />
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </form>
+    }>
+      <SearchFormContent {...props} />
+    </React.Suspense>
   );
 }
